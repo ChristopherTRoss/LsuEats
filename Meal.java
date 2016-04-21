@@ -1,8 +1,5 @@
 package com.gth.protolsueats;
 
-/**
- * Created by 14481_000 on 4/15/2016.
- */
 public class Meal
 {
     private String name;
@@ -67,10 +64,7 @@ public class Meal
      */
     public boolean isEqual(Meal meal)
     {
-        if(meal.getCost() == cost && meal.getName().equals(name) && meal.getType().equals(type))
-            return true;
-        else
-            return false;
+        return meal.getCost() == cost && meal.getName().equals(name) && meal.getType().equals(type);
     }
 
     /**
@@ -79,9 +73,9 @@ public class Meal
      * Food name  cost Resturant Name
      * EX. Cheeseburger 2.99
      */
-    public void printMealDescription()
+    public String MealDescription()
     {
-        System.out.printf("%s  %.2f %s \n", name, cost, res.getResName());
+        return "Meal: " + name + " " + "$" + cost + "0\n" +res.getResName() +" located at " + res.getLocation();
     }
 
 

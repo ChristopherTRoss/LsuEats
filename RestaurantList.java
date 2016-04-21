@@ -37,7 +37,7 @@ public class RestaurantList {
     }
     /**
      *
-     * @param position
+     * @param position position of restaurant in array that you want returned
      * @return Resturant located at that position on the list
      */
     public Restaurant getRes(int position)
@@ -91,17 +91,45 @@ public class RestaurantList {
         return null;
     }
 
+    public Menu listToMenu()
+    {
+        Menu menu = new Menu();
+        Meal meal;
+        for(int i =0; i<this.getSize();i++)
+            for(int j = 0; j<this.getRes(i).getMenu().getSize(); j++)
+            {
+                meal = this.getRes(i).getMenu().getMeal(j);
+                menu.insert(meal);
+            }
+        return menu;
+    }
+
+    public RestaurantList combineResList(RestaurantList resList1, RestaurantList resList2)
+    {
+        RestaurantList finalResList = new RestaurantList();
+        for(int i = 0; i<resList1.getSize();i++)
+        {
+            finalResList.insert(resList1.getRes(i));
+        }
+        for(int i = 0; i<resList2.getSize();i++)
+        {
+            finalResList.insert((resList2.getRes(i)));
+        }
+        return finalResList;
+    }
+
+
 
     /**
      * Print the Resturant list by just their name and location
      * Ex. Mellow Mushroom Burbank Dr.
      */
-    public void printList()
-    {
-        for(int i = 0; i<listSize;i++)
-        {
-            System.out.printf("%s %s\n", list[i].getResName(), list[i].getLocation());
-            list[i].getMenu().printMenu();
-        }
-    }
+//    public void printList()
+//    {
+//        for(int i = 0; i<listSize;i++)
+//        {
+//            System.out.printf("%s %s\n", list[i].getResName(), list[i].getLocation());
+//            list[i].getMenu().printMenu();
+//        }
+//    }
 }

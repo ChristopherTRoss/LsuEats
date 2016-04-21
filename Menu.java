@@ -1,12 +1,10 @@
 package com.gth.protolsueats;
 
 import java.util.Random;
-/**
- * Created by 14481_000 on 4/15/2016.
- */
+
 public class Menu
 {
-    private Meal [] list = new Meal[100];
+    private Meal [] list = new Meal[500];
     private int listSize;
 
     /*
@@ -60,13 +58,18 @@ public class Menu
 
     public Menu add(Menu menu)
     {
+        Menu finalMenu = new Menu();
         int menSize = menu.getSize();
-        Menu retMenu = this;
+
         for(int i = 0; i<menSize;i++)
         {
-            list[listSize] = menu.getMeal(i);
+            finalMenu.insert(menu.getMeal(i));
         }
-        return this;
+        for(int i = 0; i<listSize;i++)
+        {
+            finalMenu.insert(list[i]);
+        }
+        return finalMenu;
 
     }
     /**
@@ -101,13 +104,13 @@ public class Menu
      *     Nuggets 1.99 McDonalds
      *     McFlurry 1.00 McDonalds
      */
-    public void printMenu()
-    {
-        for(int i = 0; i<listSize; i++)
-        {
-            list[i].printMealDescription();
-        }
-    }
+//    public void printMenu()
+//    {
+//        for(int i = 0; i<listSize; i++)
+//        {
+//            list[i].printMealDescription();
+//        }
+//    }
 
 
 
